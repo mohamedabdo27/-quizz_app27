@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quizz_app/screens/category_screen.dart';
+
+import 'package:quizz_app/screens/opening_screen.dart';
 
 class ScoreScreen extends StatelessWidget {
   const ScoreScreen({super.key});
@@ -9,7 +10,7 @@ class ScoreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(2),
+        padding: const EdgeInsets.all(2),
         color: const Color.fromARGB(255, 126, 94, 94),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -21,7 +22,7 @@ class ScoreScreen extends StatelessWidget {
               "hello Mohamed abdo ,\n your score is 5/10 .",
               style: GoogleFonts.abhayaLibre(
                   fontSize: MediaQuery.of(context).size.height * 0.04,
-                  color: Color.fromARGB(255, 66, 4, 53)),
+                  color: const Color.fromARGB(255, 66, 4, 53)),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.5,
@@ -35,11 +36,11 @@ class ScoreScreen extends StatelessWidget {
                   backgroundColor: Colors.green,
                   elevation: 20),
               onPressed: () {
-                Navigator.push(
+                Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const CategoryScreen(),
-                  ),
+                  MaterialPageRoute(
+                      builder: (context) => const OpeningScreen()),
+                  (route) => false,
                 );
               },
               child: Text(
@@ -49,7 +50,7 @@ class ScoreScreen extends StatelessWidget {
                     fontSize: MediaQuery.of(context).size.height * 0.025),
               ),
             ),
-            Spacer(),
+            const Spacer(),
           ],
         ),
       ),

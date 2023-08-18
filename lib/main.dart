@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizz_app/screens/login_screen.dart';
 
 import 'package:quizz_app/screens/opening_screen.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // ignore: prefer_const_constructors
-      home: OpeningScreen(),
+      home: LoginScreen(),
     );
   }
 }
