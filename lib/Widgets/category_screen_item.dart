@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:quizz_app/screens/sport_quizz.dart';
+import 'package:quizz_app/Global/data.dart';
+import 'package:quizz_app/screens/quizz_screen.dart';
 
 class CategoryItem extends StatelessWidget {
   CategoryItem({super.key, required this.index});
   final int index;
-  List quizColor = [
+  final List quizColor = [
     Colors.green,
     const Color.fromARGB(255, 139, 158, 182),
     const Color.fromARGB(255, 83, 57, 64),
-    const Color.fromARGB(255, 75, 95, 3)
+    const Color.fromARGB(255, 177, 137, 16),
+    const Color.fromARGB(255, 51, 6, 155),
+    const Color.fromARGB(255, 184, 4, 34),
   ];
-  List quizzPage = [];
-  List quizzName = ["Sports test", "History test", "Math test", "General test"];
+
+  final List quizzName = [
+    "Sports test",
+    "History test",
+    "General test",
+    "Math Test",
+    "Computer sciense test",
+    "Problems solving"
+  ];
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -20,7 +30,9 @@ class CategoryItem extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute<void>(
-                builder: (BuildContext context) => const SportQuizz(),
+                builder: (BuildContext context) => QuizzScreen(
+                  categoryMap: dataBase[index],
+                ),
               ));
         },
         child: Container(

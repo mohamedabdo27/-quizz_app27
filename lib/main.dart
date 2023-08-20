@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizz_app/screens/login_screen.dart';
+import 'package:quizz_app/screens/category_screen.dart';
 
 import 'package:quizz_app/screens/opening_screen.dart';
 
@@ -13,13 +13,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      // ignore: prefer_const_constructors
-      home: LoginScreen(),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        // ignore: prefer_const_constructors
+        home: OpeningScreen(),
+        routes: {
+          '/category': (context) => const CategoryScreen(),
+        });
   }
 }

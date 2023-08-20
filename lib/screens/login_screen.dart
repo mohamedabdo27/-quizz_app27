@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:quizz_app/Global/data.dart';
 import 'package:quizz_app/screens/category_screen.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final formKey = GlobalKey<FormState>();
+
+  bool suffix = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,16 +71,17 @@ class LoginScreen extends StatelessWidget {
 
                           return null;
                         },
-                        decoration: InputDecoration(
-                            prefix: const Icon(Icons.person),
-                            hintText: "User name",
+                        controller: userName,
+                        keyboardType: TextInputType.name,
+                        decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.person),
+                            labelText: "User name",
                             focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30),
-                                borderSide:
-                                    const BorderSide(color: Colors.blue)),
+                                //   borderRadius: BorderRadius.circular(35),
+                                borderSide: BorderSide(color: Colors.blue)),
                             enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.black),
-                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide(color: Colors.black),
+                              //   borderRadius: BorderRadius.circular(35),
                             )),
                       ),
                     ),
@@ -97,17 +108,25 @@ class LoginScreen extends StatelessWidget {
                           }
                           return null;
                         },
+                        obscureText: suffix,
+                        keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
-                            prefix: const Icon(Icons.person),
-                            suffixIcon: const Icon(Icons.visibility),
-                            hintText: "Password",
-                            focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30),
-                                borderSide:
-                                    const BorderSide(color: Colors.blue)),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.black),
-                              borderRadius: BorderRadius.circular(30),
+                            prefixIcon: const Icon(Icons.lock),
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {});
+                                  suffix = !suffix;
+                                },
+                                icon: Icon(suffix
+                                    ? Icons.visibility_off
+                                    : Icons.visibility)),
+                            labelText: "Password",
+                            focusedBorder: const OutlineInputBorder(
+                                // borderRadius: BorderRadius.circular(30),
+                                borderSide: BorderSide(color: Colors.blue)),
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black),
+                              // borderRadius: BorderRadius.circular(30),
                             )),
                       ),
                     ),
