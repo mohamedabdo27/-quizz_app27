@@ -7,9 +7,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc/bloc.dart';
 import 'package:quizz_app/screens/opening_screen.dart';
 import 'package:quizz_app/screens/radio.dart';
+import 'package:quizz_app/screens/selection.dart';
+import 'package:quizz_app/screens/selection_cubit.dart';
 import 'package:quizz_app/screens/text_field.dart';
 import 'package:quizz_app/screens/text_field_cubit.dart';
 
+import 'Cubits/SelectionCubit/selectin_cubit_cubit.dart';
 import 'screens/filterbar_cubit.dart';
 
 void main() {
@@ -27,6 +30,8 @@ class MyApp extends StatelessWidget {
               create: (BuildContext context) => FilterCubit()),
           BlocProvider<TextFieldCubit>(
               create: (BuildContext context) => TextFieldCubit()),
+          BlocProvider<SelectionCubitCubit>(
+              create: (BuildContext context) => SelectionCubitCubit()),
         ],
         child: MaterialApp(
           title: 'Flutter Demo',
@@ -35,7 +40,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           // ignore: prefer_const_constructors
-          home: MyRadio(),
+          home: SelectionCubit(),
         ));
   }
 }
